@@ -151,7 +151,7 @@
                             }
                             if (this.vscrollParent.$_undefinedMap[id]) {
                                 if (typeof this.vscrollParent.$_undefinedSizes === 'number')
-                                    this.vscrollParent.$_undefinedSizes --
+                                    this.vscrollParent.$_undefinedSizes--
                                 else
                                     this.vscrollParent.$_undefinedSizes = 0
                                 this.vscrollParent.$_undefinedMap[id] = undefined

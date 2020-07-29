@@ -1,3 +1,5 @@
 docs/
 docs-src/
 .babelrc
+node_modules/
+.idea/

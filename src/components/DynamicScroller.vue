@@ -180,21 +180,30 @@
             scrollToBottom() {
                 if (this.$_scrollingToBottom) return
                 this.$_scrollingToBottom = true
+                this.$_bottomCount = 0;
                 const el = this.$el
                 // Item is inserted to the DOM
                 this.$nextTick(() => {
                     // Item sizes are computed
                     const cb = () => {
+                        // console.log('cb');
+                        this.$_bottomCount++;
                         el.scrollTop = el.scrollHeight
-                        if (this.$_undefinedSizes === 0) {
+                        if (this.$_bottomCount < 30)
+                            if (this.$_undefinedSizes === 0) {
+                                this.$_scrollingToBottom = false
+                            } else {
+                                requestAnimationFrame(cb)
+                            }
+                        else {
                             this.$_scrollingToBottom = false
-                        } else {
-                            requestAnimationFrame(cb)
+                            this.$_undefinedSizes = 0;
                         }
                     }
                     requestAnimationFrame(cb)
                 })
             },
+
         },
     }
 </script>
